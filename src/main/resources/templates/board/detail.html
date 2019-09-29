@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<h2 th:text="${boardDto.title}"></h2>
+<p th:inline="text">등록일 : [[${boardDto.createdDate}]]</p>
+
+<p th:text="${boardDto.content}"></p>
+
+<!-- 수정/삭제 -->
+<div>
+    <a th:href="@{'/post/edit/' + ${boardDto.id}}">
+        <button>수정</button>
+    </a>
+
+    <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <button id="delete-btn">삭제</button>
+    </form>
+</div>
+
+<!-- 변수 셋팅 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var boardDto = /*[[${boardDto}]]*/ "";
+    /*]]>*/
+</script>
+
+<!-- script -->
+<script th:inline="javascript" th:src="@{/js/board.js}"></script>
 </body>
 </html>

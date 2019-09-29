@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
     <!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
 
     <a th:href="@{/post}">글쓰기</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th class="one wide">번호</th>
+            <th class="ten wide">글제목</th>
+            <th class="two wide">작성자</th>
+            <th class="three wide">작성일</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- CONTENTS !-->
+        <tr th:each="board : ${boardList}">
+            <td>
+                <span th:text="${board.id}"></span>
+            </td>
+            <td>
+                <a th:href="@{'/post/' + ${board.id}}">
+                    <span th:text="${board.title}"></span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${board.writer}"></span>
+            </td>
+            <td>
+                <span th:text="${board.createdDate}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
     <!-- FOOTER -->
     <div th:insert="common/footer.html" id="footer"></div>
