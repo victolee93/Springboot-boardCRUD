@@ -23,7 +23,7 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         model.addAttribute("pageList", pageList);
 
-        return "/board/list.html";
+        return "board/list.html";
     }
 
 
@@ -33,7 +33,7 @@ public class BoardController {
         BoardDto boardDTO = boardService.getPost(no);
 
         model.addAttribute("boardDto", boardDTO);
-        return "/board/detail.html";
+        return "board/detail.html";
     }
 
 
@@ -57,7 +57,7 @@ public class BoardController {
         BoardDto boardDTO = boardService.getPost(no);
 
         model.addAttribute("boardDto", boardDTO);
-        return "/board/update.html";
+        return "board/update.html";
     }
 
     @PutMapping("/post/edit/{no}")
@@ -81,6 +81,6 @@ public class BoardController {
 
         model.addAttribute("boardList", boardDtoList);
 
-        return "/board/list.html";
+        return "board/list.html";
     }
 }
