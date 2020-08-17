@@ -40,7 +40,7 @@ public class BoardController {
     /* 게시글 쓰기 */
     @GetMapping("/post")
     public String write() {
-        return "/board/write.html";
+        return "board/write.html";
     }
 
     @PostMapping("/post")
